@@ -1,4 +1,4 @@
-# echtzeit-faehige-geraete-und-roboter
+# Echtzeitfähige Geräte und Roboter
 
 Hinweise zum Praktikum:  
 
