@@ -4,12 +4,15 @@
 #include <stdint.h>
 
 // Basisadressen für GPIO-Ports
+#define GPIO_BASE 0x48000000
+
 #define GPIOA_BASE 0x48000000
 #define GPIOB_BASE 0x48000400
 #define GPIOC_BASE 0x48000800
 #define GPIOD_BASE 0x48000C00
 #define GPIOE_BASE 0x48001000
 #define GPIOF_BASE 0x48001400
+#define GPIOF_BASE 0x48001800
 
 // Register-Offsets
 #define GPIO_MODER_OFFSET 0x00
