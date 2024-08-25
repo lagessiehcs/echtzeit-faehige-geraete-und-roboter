@@ -1,33 +1,44 @@
 #include "gpio.h"
-void GPIO_Init_Input(uint32_t port, uint8_t pin, uint8_t pupd)
+
+void GPIO_InputInit(uint32_t port, uint8_t pin, uint8_t pupd)
 {
-    GPIO_Set_Mode(port, pin, GPIO_MODE_INPUT);
-    GPIO_Set_Pull_Up_Pull_Down(port, pin, pupd);
+    GPIO_Activate(port);
+    GPIO_SetMode(port, pin, GPIO_MODE_INPUT);
+    GPIO_SetPullUpPullDown(port, pin, pupd);
 }
-void GPIO_Init_Output(uint32_t port, uint8_t pin, uint8_t type)
+void GPIO_OutputInit(uint32_t port, uint8_t pin, uint8_t type)
 {
-    GPIO_Set_Mode(port, pin, GPIO_MODE_OUTPUT);
-    GPIO_Set_Output_Type(port, pin, type);
+    GPIO_Activate(port);
+    GPIO_SetMode(port, pin, GPIO_MODE_OUTPUT);
+    GPIO_SetOutputType(port, pin, type);
 }
-void GPIO_Set_Mode(uint32_t port, uint8_t pin, uint8_t mode)
+
+GPIO_Activate(uint32_t port)
+{
+    // Aktivierung des GPIOx Moduls (x = A...G)
+    int port_offset = (port - GPIO_BASE) / (0x400);
+    uint32_t volatile *adresse = (uint32_t *)(0x40021000 + 0x4C + port_offset);
+    *adresse |= (1 << 0);
+}
+void GPIO_SetMode(uint32_t port, uint8_t pin, uint8_t mode)
 {
     GPIO_MODER(port) &= ~(0x3 << (pin * 2)); // Lösche die bestehenden Bits
     GPIO_MODER(port) |= (mode << (pin * 2)); // Setze den neuen Modus
 }
 
-void GPIO_Set_Output_Type(uint32_t port, uint8_t pin, uint8_t type)
+void GPIO_SetOutputType(uint32_t port, uint8_t pin, uint8_t type)
 {
     GPIO_OTYPER(port) &= ~(0x1 << pin); // Lösche das bestehende Bit
     GPIO_OTYPER(port) |= (type << pin); // Setze den neuen Typ
 }
 
-void GPIO_Set_Speed(uint32_t port, uint8_t pin, uint8_t speed)
+void GPIO_SetSpeed(uint32_t port, uint8_t pin, uint8_t speed)
 {
     GPIO_OSPEEDR(port) &= ~(0x3 << (pin * 2));  // Lösche die bestehenden Bits
     GPIO_OSPEEDR(port) |= (speed << (pin * 2)); // Setze die neue Geschwindigkeit
 }
 
-void GPIO_Set_Pull_Up_Pull_Down(uint32_t port, uint8_t pin, uint8_t pupd)
+void GPIO_SetPullUpPullDown(uint32_t port, uint8_t pin, uint8_t pupd)
 {
     GPIO_PUPDR(port) &= ~(0x3 << (pin * 2)); // Lösche die bestehenden Bits
     GPIO_PUPDR(port) |= (pupd << (pin * 2)); // Setze die neue Pull-Up/Pull-Down Konfiguration
