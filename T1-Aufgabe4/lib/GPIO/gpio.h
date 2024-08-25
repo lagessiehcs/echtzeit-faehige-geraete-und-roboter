@@ -63,8 +63,8 @@
 #define GPIO_RESERVED 0x03
 
 // Funktionen
-void GPIO_Init_Input(uint32_t port, uint8_t pin, uint8_t pupd);
-void GPIO_Init_Output(uint32_t port, uint8_t pin, uint8_t type);
+void GPIO_InitInput(uint32_t port, uint8_t pin, uint8_t pupd);
+void GPIO_InitOutput(uint32_t port, uint8_t pin, uint8_t type);
 void GPIO_SetPinMode(uint32_t port, uint8_t pin, uint8_t mode);
 void GPIO_SetPinOutputType(uint32_t port, uint8_t pin, uint8_t type);
 void GPIO_SetPinSpeed(uint32_t port, uint8_t pin, uint8_t speed);

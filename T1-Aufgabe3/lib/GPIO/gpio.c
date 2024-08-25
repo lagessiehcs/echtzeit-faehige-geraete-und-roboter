@@ -1,10 +1,10 @@
 #include "gpio.h"
-void GPIO_Init_Input(uint32_t port, uint8_t pin, uint8_t pupd)
+void GPIO_InitInput(uint32_t port, uint8_t pin, uint8_t pupd)
 {
     GPIO_SetPinMode(port, pin, GPIO_MODE_INPUT);
     GPIO_SetPinPullUpPullDown(port, pin, pupd);
 }
-void GPIO_Init_Output(uint32_t port, uint8_t pin, uint8_t type)
+void GPIO_InitOutput(uint32_t port, uint8_t pin, uint8_t type)
 {
     GPIO_SetPinMode(port, pin, GPIO_MODE_OUTPUT);
     GPIO_SetPinOutputType(port, pin, type);
