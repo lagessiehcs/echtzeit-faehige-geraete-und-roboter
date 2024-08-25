@@ -63,14 +63,14 @@
 #define GPIO_RESERVED 0x03
 
 // Funktionen
-void GPIO_InitInput(uint32_t port, uint8_t pin, uint8_t pupd);
-void GPIO_InitOutput(uint32_t port, uint8_t pin, uint8_t type);
-void GPIO_SetPinMode(uint32_t port, uint8_t pin, uint8_t mode);
-void GPIO_SetPinOutputType(uint32_t port, uint8_t pin, uint8_t type);
-void GPIO_SetPinSpeed(uint32_t port, uint8_t pin, uint8_t speed);
-void GPIO_SetPinPullUpPullDown(uint32_t port, uint8_t pin, uint8_t pupd);
-void GPIO_WritePin(uint32_t port, uint8_t pin, uint8_t state);
-uint8_t GPIO_ReadPin(uint32_t port, uint8_t pin);
-void GPIO_TogglePin(uint32_t port, uint8_t pin);
+void GPIO_Init_Input(uint32_t port, uint8_t pin, uint8_t pupd);
+void GPIO_Init_Output(uint32_t port, uint8_t pin, uint8_t type);
+void GPIO_Set_Mode(uint32_t port, uint8_t pin, uint8_t mode);
+void GPIO_Set_Output_Type(uint32_t port, uint8_t pin, uint8_t type);
+void GPIO_Set_Speed(uint32_t port, uint8_t pin, uint8_t speed);
+void GPIO_Set_Pull_Up_Pull_Down(uint32_t port, uint8_t pin, uint8_t pupd);
+void GPIO_Write(uint32_t port, uint8_t pin, uint8_t state);
+uint8_t GPIO_Read(uint32_t port, uint8_t pin);
+void GPIO_Toggle(uint32_t port, uint8_t pin);
 
 #endif // GPIO_H

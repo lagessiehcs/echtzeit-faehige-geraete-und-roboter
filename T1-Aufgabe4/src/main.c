@@ -66,22 +66,22 @@ void change_color_LED(uint32_t port, uint8_t pin)
 {
     if (current_color == BLUE)
     {
-        GPIO_TogglePin(LED_RED);
+        GPIO_Toggle(LED_RED);
         current_color = RED;
     }
     else if (current_color == RED)
     {
-        GPIO_TogglePin(LED_GREEN);
+        GPIO_Toggle(LED_GREEN);
         current_color = GREEN;
     }
     else if (current_color == GREEN)
     {
-        GPIO_TogglePin(LED_BLUE);
+        GPIO_Toggle(LED_BLUE);
         current_color = BLUE;
     }
     delay_ms(milliseconds);
 }
 int is_button_pushed(uint32_t port, uint8_t pin)
 {
-    return GPIO_ReadPin(port, pin);
+    return GPIO_Read(port, pin);
 }
