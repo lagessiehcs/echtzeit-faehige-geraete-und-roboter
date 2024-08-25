@@ -13,7 +13,7 @@ void GPIO_OutputInit(uint32_t port, uint8_t pin, uint8_t type)
     GPIO_SetOutputType(port, pin, type);
 }
 
-GPIO_Activate(uint32_t port)
+void GPIO_Activate(uint32_t port)
 {
     // Aktivierung des GPIOx Moduls (x = A...G)
     int port_offset = (port - GPIO_BASE) / (0x400);
