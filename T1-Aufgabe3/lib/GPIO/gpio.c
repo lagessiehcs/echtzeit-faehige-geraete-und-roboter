@@ -2,24 +2,26 @@
 
 void GPIO_InputInit(uint32_t port, uint8_t pin, uint8_t pupd)
 {
-    GPIO_Activate(port);
+    GPIO_Enable(port);
     GPIO_SetMode(port, pin, GPIO_MODE_INPUT);
     GPIO_SetPullUpPullDown(port, pin, pupd);
 }
+
 void GPIO_OutputInit(uint32_t port, uint8_t pin, uint8_t type)
 {
-    GPIO_Activate(port);
+    GPIO_Enable(port);
     GPIO_SetMode(port, pin, GPIO_MODE_OUTPUT);
     GPIO_SetOutputType(port, pin, type);
 }
 
-void GPIO_Activate(uint32_t port)
+void GPIO_Enable(uint32_t port)
 {
     // Aktivierung des GPIOx Moduls (x = A...G)
     int port_offset = (port - GPIO_BASE) / (0x400);
     uint32_t volatile *adresse = (uint32_t *)(0x40021000 + 0x4C + port_offset);
     *adresse |= (1 << 0);
 }
+
 void GPIO_SetMode(uint32_t port, uint8_t pin, uint8_t mode)
 {
     GPIO_MODER(port) &= ~(0x3 << (pin * 2)); // Lösche die bestehenden Bits

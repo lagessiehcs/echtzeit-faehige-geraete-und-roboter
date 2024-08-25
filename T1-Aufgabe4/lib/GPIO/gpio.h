@@ -68,7 +68,7 @@
 // Funktionen
 void GPIO_InputInit(uint32_t port, uint8_t pin, uint8_t pupd);
 void GPIO_OutputInit(uint32_t port, uint8_t pin, uint8_t type);
-void GPIO_Activate(uint32_t port);
+void GPIO_Enable(uint32_t port);
 void GPIO_SetMode(uint32_t port, uint8_t pin, uint8_t mode);
 void GPIO_SetOutputType(uint32_t port, uint8_t pin, uint8_t type);
 void GPIO_SetSpeed(uint32_t port, uint8_t pin, uint8_t speed);
