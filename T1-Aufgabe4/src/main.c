@@ -28,12 +28,12 @@ int is_button_pushed(uint32_t port, uint8_t pin);
 int main(void)
 {
     // place code to run once here
-    GPIO_Init_Output(LED_BLUE, GPIO_OTYPE_PP);
-    GPIO_Init_Output(LED_RED, GPIO_OTYPE_PP);
-    GPIO_Init_Output(LED_GREEN, GPIO_OTYPE_PP);
+    GPIO_OutputInit(LED_BLUE, GPIO_OTYPE_PP);
+    GPIO_OutputInit(LED_RED, GPIO_OTYPE_PP);
+    GPIO_OutputInit(LED_GREEN, GPIO_OTYPE_PP);
 
-    GPIO_Init_Input(BUTTON1, GPIO_PU);
-    GPIO_Init_Input(BUTTON2, GPIO_PU);
+    GPIO_InputInit(BUTTON1, GPIO_PU);
+    GPIO_InputInit(BUTTON2, GPIO_PU);
 
     while (1)
     {
