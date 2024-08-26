@@ -29,7 +29,6 @@ int main(void)
     adresse = (uint32_t *)(0x48000000 + 0x14);
     *adresse |= (1 << 8);
 
-
     while (1)
     {
         // place your loop code here
