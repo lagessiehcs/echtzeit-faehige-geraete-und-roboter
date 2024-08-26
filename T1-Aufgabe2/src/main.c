@@ -14,6 +14,7 @@
 #define BUTTON3_PIN 4
 
 void turn_on_LED(int);
+void turn_off_LED(int);
 int is_button_pushed(int);
 void GPIOInit();
 void LEDInit(int);
