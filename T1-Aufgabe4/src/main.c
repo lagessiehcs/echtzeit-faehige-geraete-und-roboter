@@ -20,9 +20,9 @@
 
 uint32_t milliseconds = 500;
 int color_change_on = 1;
-int current_color = BLUE;
+int current_color = 0;
 
-void change_color_LED(uint32_t port, uint8_t pin);
+void change_color_LED();
 int is_button_pushed(uint32_t port, uint8_t pin);
 
 int main(void)
@@ -41,7 +41,11 @@ int main(void)
 
         if (is_button_pushed(BUTTON1))
         {
-            color_change_on = !color_change_on;
+            color_change_on = 0;
+        }
+        else
+        {
+            color_change_on = 1;
         }
 
         if (is_button_pushed(BUTTON2))
@@ -55,26 +59,34 @@ int main(void)
 
         if (color_change_on)
         {
-            change_color_LED(LED_BLUE);
+            change_color_LED();
         }
     }
 
     return 0;
 }
 
-void change_color_LED(uint32_t port, uint8_t pin)
+void change_color_LED()
 {
     if (current_color == BLUE)
     {
+        GPIO_Toggle(LED_BLUE);
         GPIO_Toggle(LED_RED);
         current_color = RED;
     }
     else if (current_color == RED)
     {
+        GPIO_Toggle(LED_RED);
         GPIO_Toggle(LED_GREEN);
         current_color = GREEN;
     }
     else if (current_color == GREEN)
+    {
+        GPIO_Toggle(LED_GREEN);
+        GPIO_Toggle(LED_BLUE);
+        current_color = BLUE;
+    }
+    else
     {
         GPIO_Toggle(LED_BLUE);
         current_color = BLUE;

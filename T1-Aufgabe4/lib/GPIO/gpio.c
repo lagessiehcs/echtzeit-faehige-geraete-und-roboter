@@ -60,7 +60,15 @@ void GPIO_Write(uint32_t port, uint8_t pin, uint8_t state)
 
 uint8_t GPIO_Read(uint32_t port, uint8_t pin)
 {
-    return (GPIO_IDR(port) & (1 << pin)) ? 1 : 0; // Lese den Pin-Zustand
+    int state = (GPIO_IDR(port) & (1 << pin)); // Lese den Pin-Zustand
+    if (state)
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
 }
 
 void GPIO_Toggle(uint32_t port, uint8_t pin)
