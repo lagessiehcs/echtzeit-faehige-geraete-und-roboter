@@ -7,8 +7,6 @@
 
 int main(void)
 {
-    // place code to run once here
-
     // ------- STEP 1: Module aktivieren -------
     // Aktivierung des GPIO A Moduls
     uint32_t volatile *adresse = (uint32_t *)(0x40021000 + 0x4C);
@@ -28,11 +26,6 @@ int main(void)
     // LED anschalten
     adresse = (uint32_t *)(0x48000000 + 0x14);
     *adresse |= (1 << 8);
-
-    while (1)
-    {
-        // place your loop code here
-    }
 
     return 0;
 }
