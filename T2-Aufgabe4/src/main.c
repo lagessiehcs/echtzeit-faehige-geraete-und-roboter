@@ -7,9 +7,9 @@
 #include <gpio.h>
 #include <syscfg.h>
 #include <exti.h>
+#include <tim.h>
 #include <Delay_ms.h>
 #include "stm32g431xx.h"
-#include <tim.h>
 
 #define SERVO GPIOA_BASE, 12
 

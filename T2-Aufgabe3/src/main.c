@@ -23,19 +23,16 @@ int compare = 100000 - 1; // compare value
 
 void TIM2_IRQHandler(void)
 {
-    // int volatile a = TIM_SR_UIF_VALUE(TIM2_BASE) & 0x01;
-    // int volatile b = TIM_SR_CC1IF_VALUE(TIM2_BASE) & 0x01;
     if ((TIM_SR(TIM2_BASE)) & (0x01))
     {
         GPIO_Write(LED_BLUE, 1);
-        // Löschen des Interrupt-Flags
     }
     else if ((TIM_SR(TIM2_BASE)) & (0x10))
     {
         GPIO_Write(LED_BLUE, 0);
-        // Löschen des Interrupt-Flags
     }
 
+    // Löschen des Interrupt-Flags
     TIM_SR(TIM2_BASE) &= ~(1 << 0x0);
     TIM_SR(TIM2_BASE) &= ~(1 << 0x1);
 }
