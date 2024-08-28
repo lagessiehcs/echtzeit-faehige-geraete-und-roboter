@@ -19,6 +19,8 @@ void MOTOR_Init(uint32_t port, uint8_t pin, uint8_t afsel, int f_req, int ar)
     TIM_SetPreload(timer_base);
     TIM_SetPrescaler(timer_base, f_req);
     TIM_SetAutoReload(timer_base, ar);
+    TIM_SetCompare1Value(timer_base, 0);
+    TIM_SetCompare2Value(timer_base, 0);
     TIM_EnableCaptureCompare(timer_base); // Output aktivieren
     TIM_EnableInterrupt(timer_base);      // Output aktivieren
     TIM_GenerateUpdateEvent(timer_base);  // Timer initialisieren
