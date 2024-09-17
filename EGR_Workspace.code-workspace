@@ -75,5 +75,11 @@
 			"path": "T5-Aufgabe2"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"files.associations": {
+			"stm32g431xx.h": "c",
+			"syscfg.h": "c",
+			"tim.h": "c"
+		}
+	}
 }
